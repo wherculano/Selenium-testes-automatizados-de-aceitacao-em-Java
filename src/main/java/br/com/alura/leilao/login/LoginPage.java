@@ -1,5 +1,6 @@
 package br.com.alura.leilao.login;
 
+import br.com.alura.leilao.leiloes.LeiloesPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -28,7 +29,7 @@ public class LoginPage {
         this.browser.findElement(By.id("password")).sendKeys(password);
     }
 
-    public void efetuaLogin() {
+    public LeiloesPage efetuaLogin() {
         this.browser.findElement(By.id("login-form")).submit();
         try {
             // aguarda meio segundo apenas para dar tempo de efetuar o login
@@ -36,6 +37,7 @@ public class LoginPage {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        return new LeiloesPage(this.browser);
     }
 
     public boolean isPaginaDeLogin() {
