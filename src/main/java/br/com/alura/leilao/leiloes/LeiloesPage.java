@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class LeiloesPage {
     private WebDriver browser;
+    private static final String URL_LEILOES = "http://localhost:8080/leiloes";
     private static final String URL_CADASTRO_LEILAO = "http://localhost:8080/leiloes/new";
 
 
@@ -32,5 +33,9 @@ public class LeiloesPage {
         return colunaNome.getText().equals(nome) &&
                 colunaDataAbertura.getText().equals(dataAbertura) &&
                 colunaValorInicial.getText().equals(valorInicial);
+    }
+
+    public boolean isPaginaAtual() {
+        return this.browser.getCurrentUrl().equals(URL_LEILOES);
     }
 }
